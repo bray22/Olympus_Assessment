@@ -177,7 +177,7 @@
     "Director": "Thomas Vinterberg",
     "YearOfRelease": 0,
     "Price": 7.50,
-    "AvailableCopies": 9
+    "AvailableCopies": 10
   },
   {
     "Title": "A Separation",
@@ -186,6 +186,6 @@
     "Director": "Asghar Farhadi",
     "YearOfRelease": 0,
     "Price": 7.75,
-    "AvailableCopies": 7
+    "AvailableCopies": 8
   }
 ]

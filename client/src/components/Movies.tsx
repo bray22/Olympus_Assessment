@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { MovieType } from '../types'; // Import MovieType
 
-const Movies = () => {
-    const [movies, setMovies] = useState([]);
+const Movies: React.FC = () => {
+    const [movies, setMovies] = useState<MovieType[]>([]);
 
     useEffect(() => {
         const fetchMovies = async () => {
             const response = await fetch('https://localhost:7021/api/Movies');
-            const data = await response.json();
+            const data: MovieType[] = await response.json();
             setMovies(data);
         };
 
@@ -21,7 +22,7 @@ const Movies = () => {
                     <h2>{movie.title}</h2>
                     <p>Director: {movie.director}</p>
                     <p>Price: ${movie.price.toFixed(2)}</p>
-                    <p>Available Copies: {movie.availableCopies}</p> {/* Display available copies */}
+                    <p>Available Copies: {movie.availableCopies}</p>
                     <Link to={`/movies/${encodeURIComponent(movie.title)}`}>
                         <button className="button">View Details</button>
                     </Link>
