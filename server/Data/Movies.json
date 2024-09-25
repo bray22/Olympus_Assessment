@@ -1,0 +1,191 @@
+[
+  {
+    "Title": "Inception",
+    "Genre": "Science Fiction",
+    "Language": "English",
+    "Director": "Christopher Nolan",
+    "YearOfRelease": 0,
+    "Price": 7.50,
+    "AvailableCopies": 9
+  },
+  {
+    "Title": "Parasite",
+    "Genre": "Thriller",
+    "Language": "Korean",
+    "Director": "Bong Joon-ho",
+    "YearOfRelease": 0,
+    "Price": 9.00,
+    "AvailableCopies": 10
+  },
+  {
+    "Title": "Amélie",
+    "Genre": "Romantic Comedy",
+    "Language": "French",
+    "Director": "Jean-Pierre Jeunet",
+    "YearOfRelease": 0,
+    "Price": 6.00,
+    "AvailableCopies": 10
+  },
+  {
+    "Title": "Spirited Away",
+    "Genre": "Animation",
+    "Language": "Japanese",
+    "Director": "Hayao Miyazaki",
+    "YearOfRelease": 0,
+    "Price": 5.50,
+    "AvailableCopies": 10
+  },
+  {
+    "Title": "The Godfather",
+    "Genre": "Crime",
+    "Language": "English",
+    "Director": "Francis Ford Coppola",
+    "YearOfRelease": 0,
+    "Price": 8.00,
+    "AvailableCopies": 10
+  },
+  {
+    "Title": "City of God",
+    "Genre": "Crime",
+    "Language": "Portuguese",
+    "Director": "Fernando Meirelles",
+    "YearOfRelease": 0,
+    "Price": 7.00,
+    "AvailableCopies": 9
+  },
+  {
+    "Title": "Pan's Labyrinth",
+    "Genre": "Fantasy",
+    "Language": "Spanish",
+    "Director": "Guillermo del Toro",
+    "YearOfRelease": 0,
+    "Price": 8.50,
+    "AvailableCopies": 10
+  },
+  {
+    "Title": "The Shawshank Redemption",
+    "Genre": "Drama",
+    "Language": "English",
+    "Director": "Frank Darabont",
+    "YearOfRelease": 0,
+    "Price": 6.50,
+    "AvailableCopies": 10
+  },
+  {
+    "Title": "The Intouchables",
+    "Genre": "Comedy-Drama",
+    "Language": "French",
+    "Director": "Olivier Nakache",
+    "YearOfRelease": 0,
+    "Price": 7.75,
+    "AvailableCopies": 10
+  },
+  {
+    "Title": "Oldboy",
+    "Genre": "Action",
+    "Language": "Korean",
+    "Director": "Park Chan-wook",
+    "YearOfRelease": 0,
+    "Price": 6.75,
+    "AvailableCopies": 10
+  },
+  {
+    "Title": "Crouching Tiger, Hidden Dragon",
+    "Genre": "Action",
+    "Language": "Mandarin",
+    "Director": "Ang Lee",
+    "YearOfRelease": 0,
+    "Price": 7.25,
+    "AvailableCopies": 10
+  },
+  {
+    "Title": "The Grand Budapest Hotel",
+    "Genre": "Comedy",
+    "Language": "English",
+    "Director": "Wes Anderson",
+    "YearOfRelease": 0,
+    "Price": 8.25,
+    "AvailableCopies": 10
+  },
+  {
+    "Title": "Life of Pi",
+    "Genre": "Adventure",
+    "Language": "English",
+    "Director": "Ang Lee",
+    "YearOfRelease": 0,
+    "Price": 8.00,
+    "AvailableCopies": 10
+  },
+  {
+    "Title": "Memories of Murder",
+    "Genre": "Crime",
+    "Language": "Korean",
+    "Director": "Bong Joon-ho",
+    "YearOfRelease": 0,
+    "Price": 6.25,
+    "AvailableCopies": 10
+  },
+  {
+    "Title": "The Lives of Others",
+    "Genre": "Drama",
+    "Language": "German",
+    "Director": "Florian Henckel von Donnersmarck",
+    "YearOfRelease": 0,
+    "Price": 7.50,
+    "AvailableCopies": 10
+  },
+  {
+    "Title": "Her",
+    "Genre": "Science Fiction",
+    "Language": "English",
+    "Director": "Spike Jonze",
+    "YearOfRelease": 0,
+    "Price": 8.75,
+    "AvailableCopies": 9
+  },
+  {
+    "Title": "The Secret in Their Eyes",
+    "Genre": "Mystery",
+    "Language": "Spanish",
+    "Director": "Juan José Campanella",
+    "YearOfRelease": 0,
+    "Price": 7.25,
+    "AvailableCopies": 8
+  },
+  {
+    "Title": "Let the Right One In",
+    "Genre": "Horror",
+    "Language": "Swedish",
+    "Director": "Tomas Alfredson",
+    "YearOfRelease": 0,
+    "Price": 6.50,
+    "AvailableCopies": 9
+  },
+  {
+    "Title": "Run Lola Run",
+    "Genre": "Thriller",
+    "Language": "German",
+    "Director": "Tom Tykwer",
+    "YearOfRelease": 0,
+    "Price": 5.75,
+    "AvailableCopies": 9
+  },
+  {
+    "Title": "The Hunt",
+    "Genre": "Drama",
+    "Language": "Danish",
+    "Director": "Thomas Vinterberg",
+    "YearOfRelease": 0,
+    "Price": 7.50,
+    "AvailableCopies": 9
+  },
+  {
+    "Title": "A Separation",
+    "Genre": "Drama",
+    "Language": "Persian",
+    "Director": "Asghar Farhadi",
+    "YearOfRelease": 0,
+    "Price": 7.75,
+    "AvailableCopies": 7
+  }
+]
