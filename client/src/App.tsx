@@ -1,32 +1,34 @@
 // src/App.tsx
-
 import React, { useState } from 'react';
 import Movies from './components/Movies';
 import Movie from './components/Movie';
 import CheckoutMovie from './components/CheckoutMovie';
-import ReturnMovie from './components/ReturnMovie';
-import './styles/style.scss'; // Import SASS styles
+import Header from './components/Header';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import { MovieType } from './types'; // Import your types
-
+import { Movie as MovieType } from './types';
+import MovieDetail from './components/MovieDetail';
+import './styles/style.scss'; // Import your styles here
 const App: React.FC = () => {
-    const [selectedMovie, setSelectedMovie] = useState<MovieType | null>(null);
     const [selectedMovies, setSelectedMovies] = useState<MovieType[]>([]);
 
-    const handleSelectMovie = (movie: MovieType) => {
-        setSelectedMovie(movie);
-        setSelectedMovies((prev) => [...prev, movie]);
+    const handleAddToCart = (movie: MovieType) => {
+        setSelectedMovies(prev => [...prev, movie]);
+    };
+
+    const handleCheckout = () => {
+        // Here you can handle checkout logic (e.g., clear cart, make API call, etc.)
+        alert('Checkout successful!');
+        setSelectedMovies([]); // Clear the cart after checkout
     };
 
     return (
         <Router>
             <div>
-                <nav className="navbar">
-                    <h1>Movie Rental Application</h1>
-                </nav>
+                <Header />
                 <Routes>
-                    <Route path="/" element={<Movies />} />
-                    <Route path="/movies/:title" element={<Movie />} />
+                    <Route path="/" element={<Movies onSelectMovie={handleAddToCart} />} />
+                    <Route path="/movies/:title" element={<MovieDetail onAddToCart={handleAddToCart} />} />
+                    <Route path="/checkout" element={<CheckoutMovie selectedMovies={selectedMovies} onCheckout={handleCheckout} />} />
                 </Routes>
             </div>
         </Router>

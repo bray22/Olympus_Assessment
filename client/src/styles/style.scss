@@ -1,5 +1,3 @@
-// styles/styles.scss
-
 // Define primary and secondary colors according to Material Design
 $primary-color: #6200ea; // Purple
 $secondary-color: #03dac6; // Teal
@@ -27,29 +25,6 @@ body {
     }
 }
 
-// Movie card styles
-.movie-card {
-    background-color: white;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    margin: 16px;
-    padding: 16px;
-    transition: transform 0.2s;
-
-    &:hover {
-        transform: scale(1.02);
-    }
-
-    h2 {
-        font-size: 20px;
-        color: $primary-color;
-    }
-
-    p {
-        color: $text-color;
-    }
-}
-
 // Button styles
 .button {
     background-color: $secondary-color;
@@ -64,4 +39,120 @@ body {
     &:hover {
         background-color: darken($secondary-color, 10%);
     }
+}
+
+// Movies container styles
+.movies-container {
+  display: flex; /* Use flexbox for layout */
+  padding: 20px;
+
+  .movie-list {
+      flex: 1; /* Take up one part of the space */
+      max-width: 250px; /* Set a max-width for the movie list */
+      margin-right: 20px; /* Space between the list and details */
+      border-right: 1px solid #ccc; /* Optional: border for visual separation */
+      
+      h2 {
+          margin-bottom: 1rem; /* Space below the title */
+      }
+
+      .scrollable-list {
+          max-height: 400px; /* Set a max height to enable scrolling */
+          overflow-y: auto; /* Enable vertical scrolling */
+          padding-right: 10px; /* Optional: padding for better readability */
+
+          .movie-item {
+              padding: 10px; // Space around each movie item
+              cursor: pointer; // Change cursor on hover
+              transition: background 0.3s; // Smooth transition for background change
+
+              &:hover {
+                  background: #f0f0f0; // Change background on hover
+              }
+
+              .movie-box {
+                padding: 10px; // Space around each movie item
+                cursor: pointer; // Change cursor on hover
+                border: 1px solid #ccc; // Optional border for visual separation
+                border-radius: 5px; // Rounded corners
+                transition: background 0.3s; // Smooth transition for background change
+            
+                &:hover {
+                    background: #f0f0f0; // Change background on hover
+                }
+            
+                h3 {
+                    margin: 0; // Remove default margin
+                }
+            
+                p {
+                    margin: 5px 0; // Space between paragraphs
+                }
+            }
+          }
+      }
+  }
+
+  .movie-details {
+      flex: 2; /* Take up two parts of the space */
+      padding-left: 1rem;
+
+      .movie-card {
+          background: #f9f9f9; /* Card background color */
+          border: 1px solid #ddd; /* Card border */
+          border-radius: 8px; /* Rounded corners */
+          padding: 1rem;
+
+          h3 {
+              margin-top: 0; /* Remove top margin */
+          }
+      }
+  }
+}
+
+// Header styles
+.header {
+    display: flex;
+    justify-content: space-between; /* Align items with space between */
+    align-items: center; /* Center vertically */
+    padding: 1rem;
+    background-color: #282c34; /* Background color */
+    color: white; /* Text color */
+
+    .header-title {
+        margin: 0; /* Remove default margin */
+    }
+
+    .header-nav {
+        display: flex; /* Use flexbox for nav links */
+        gap: 1.5rem; /* Space between links */
+
+        a {
+            color: white; /* Link color */
+            text-decoration: none; /* Remove underline */
+            transition: color 0.3s; /* Smooth transition for hover effect */
+
+            &:hover {
+                color: #61dafb; /* Change color on hover */
+            }
+        }
+    }
+}
+
+// Optional: Add styles for other components if necessary
+.checkout {
+  padding: 20px;
+
+  h2 {
+      margin-bottom: 20px;
+  }
+
+  ul {
+      list-style-type: none;
+      padding: 0;
+
+      li {
+          margin-bottom: 10px;
+      }
+  }
 }
