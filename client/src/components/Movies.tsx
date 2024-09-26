@@ -1,25 +1,18 @@
-
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
-
-interface Movie {
-    title: string;
-    director: string;
-    year_of_release: number;
-    genre: string;
-    price: number;
-    language: string;
-    availableCopies: number;
-}
+import { Movie } from '../types';
+import Modal from './Modal'; // Import the modal component
 
 interface MoviesProps {
-    onSelectMovie: (movie: Movie) => void; // Define the type for the prop
+    onSelectMovie: (movie: Movie) => void; // Accept a single movie for adding/removing
+    selectedMovies: Movie[]; // Prop to check which movies are selected
 }
 
-const Movies: React.FC<MoviesProps> = ({ onSelectMovie }) => {
+const Movies: React.FC<MoviesProps> = ({ onSelectMovie, selectedMovies }) => {
     const [movies, setMovies] = useState<Movie[]>([]);
-    const [selectedMovie, setSelectedMovie] = useState<Movie | null>(null);
+    const [selectedMovie, setSelectedMovie] = useState<Movie | null>(null); // State for the selected movie
+    const [isModalOpen, setIsModalOpen] = useState(false); // State to manage modal visibility
 
+    // Fetch movies from the API
     useEffect(() => {
         const fetchMovies = async () => {
             const response = await fetch('https://localhost:7021/api/Movies');
@@ -30,41 +23,59 @@ const Movies: React.FC<MoviesProps> = ({ onSelectMovie }) => {
         fetchMovies();
     }, []);
 
+    // Function to handle movie selection
     const handleSelectMovie = (movie: Movie) => {
+        onSelectMovie(movie); // Call the function to add/remove the movie from cart
+    };
+
+    // Function to open modal
+    const openModal = (movie: Movie) => {
         setSelectedMovie(movie);
-        onSelectMovie(movie); // Call the prop function
+        setIsModalOpen(true);
+    };
+
+    // Function to close modal
+    const closeModal = () => {
+        setIsModalOpen(false);
+        setSelectedMovie(null);
     };
 
     return (
         <div className="movies-container">
-            <div className="movie-list">
-                <h2>Available Movies</h2>
-                <div className="scrollable-list">
-                    {movies.map((movie) => (
-                        <div key={movie.title} className="movie-item">
-                            <Link to="#" onClick={() => handleSelectMovie(movie)}>
-                                {movie.title}
-                            </Link>
+            <div className="movies-grid">
+                {movies.map((movie) => {
+                    const isSelected = selectedMovies.some(selected => selected.title === movie.title);
+                    return (
+                        <div
+                            key={movie.title}
+                            className={`movie-card ${isSelected ? 'selected' : ''}`} // Add a class for styling
+                            onClick={() => openModal(movie)} // Open modal on card click
+                        >
+                            <h4>{movie.title}</h4>
+                            <p><strong>Genre:</strong> {movie.genre}</p>
+                            <p><strong>Available Copies:</strong> {movie.availableCopies}</p>
+                            <button 
+                                className="button" 
+                                onClick={(e) => { // Handle add/remove separately
+                                    e.stopPropagation(); // Prevent opening modal
+                                    handleSelectMovie(movie);
+                                }}
+                                disabled={movie.availableCopies === 0} // Disable button if no copies available
+                            >
+                                {isSelected ? 'Remove from Cart' : 'Add to Cart'}
+                            </button>
                         </div>
-                    ))}
-                </div>
+                    );
+                })}
             </div>
-            <div className="movie-details">
-                {selectedMovie ? (
-                    <div className="movie-card">
-                        <h3>{selectedMovie.title}</h3>
-                        <p><strong>Director:</strong> {selectedMovie.director}</p>
-                        <p><strong>Year of Release:</strong> {selectedMovie.year_of_release}</p>
-                        <p><strong>Genre:</strong> {selectedMovie.genre}</p>
-                        <p><strong>Price:</strong> ${selectedMovie.price.toFixed(2)}</p>
-                        <p><strong>Language:</strong> {selectedMovie.language}</p>
-                        <p><strong>Available Copies:</strong> {selectedMovie.availableCopies}</p>
-                        <button className="button">Rent Movie</button>
-                    </div>
-                ) : (
-                    <p>Select a movie to see the details.</p>
-                )}
-            </div>
+            {isModalOpen && selectedMovie && ( // Render modal if open
+                <Modal 
+                    movie={selectedMovie} 
+                    onClose={closeModal} 
+                    onSelectMovie={handleSelectMovie} // Pass the add/remove function to the modal
+                    selectedMovies={selectedMovies} // Pass selected movies to check if movie is in cart
+                />
+            )}
         </div>
     );
 };

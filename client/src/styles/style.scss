@@ -3,6 +3,7 @@ $primary-color: #6200ea; // Purple
 $secondary-color: #03dac6; // Teal
 $background-color: #f5f5f5; // Light Grey
 $text-color: #212121; // Dark Grey
+$hover-color: darken($secondary-color, 10%); // Darkened secondary color for hover effects
 
 // Global styles
 body {
@@ -17,6 +18,7 @@ body {
 .navbar {
     background-color: $primary-color;
     padding: 16px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); // Add shadow for depth
 
     h1 {
         color: white;
@@ -34,125 +36,257 @@ body {
     padding: 8px 16px;
     cursor: pointer;
     font-size: 16px;
-    transition: background-color 0.2s;
+    transition: background-color 0.2s, transform 0.2s; // Added transform for scale effect
 
     &:hover {
-        background-color: darken($secondary-color, 10%);
+        background-color: $hover-color;
+        transform: translateY(-2px); // Slightly lift button on hover
     }
 }
 
 // Movies container styles
 .movies-container {
-  display: flex; /* Use flexbox for layout */
-  padding: 20px;
+    display: flex;
+    padding: 20px;
 
-  .movie-list {
-      flex: 1; /* Take up one part of the space */
-      max-width: 250px; /* Set a max-width for the movie list */
-      margin-right: 20px; /* Space between the list and details */
-      border-right: 1px solid #ccc; /* Optional: border for visual separation */
-      
-      h2 {
-          margin-bottom: 1rem; /* Space below the title */
-      }
+    .movie-list {
+        flex: 1;
+        max-width: 250px;
+        margin-right: 20px;
+        border-right: 1px solid #ccc;
 
-      .scrollable-list {
-          max-height: 400px; /* Set a max height to enable scrolling */
-          overflow-y: auto; /* Enable vertical scrolling */
-          padding-right: 10px; /* Optional: padding for better readability */
+        h2 {
+            margin-bottom: 1rem;
+            font-size: 20px; // Increased size for better readability
+            color: $text-color;
+        }
 
-          .movie-item {
-              padding: 10px; // Space around each movie item
-              cursor: pointer; // Change cursor on hover
-              transition: background 0.3s; // Smooth transition for background change
+        .scrollable-list {
+            max-height: 400px;
+            overflow-y: auto;
+            padding-right: 10px;
 
-              &:hover {
-                  background: #f0f0f0; // Change background on hover
-              }
+            .movie-item {
+                padding: 10px;
+                cursor: pointer;
+                transition: background 0.3s;
 
-              .movie-box {
-                padding: 10px; // Space around each movie item
-                cursor: pointer; // Change cursor on hover
-                border: 1px solid #ccc; // Optional border for visual separation
-                border-radius: 5px; // Rounded corners
-                transition: background 0.3s; // Smooth transition for background change
-            
                 &:hover {
-                    background: #f0f0f0; // Change background on hover
-                }
-            
-                h3 {
-                    margin: 0; // Remove default margin
-                }
-            
-                p {
-                    margin: 5px 0; // Space between paragraphs
+                    background: rgba(0, 0, 0, 0.05); // Slightly darker background on hover
                 }
             }
-          }
-      }
-  }
-
-  .movie-details {
-      flex: 2; /* Take up two parts of the space */
-      padding-left: 1rem;
-
-      .movie-card {
-          background: #f9f9f9; /* Card background color */
-          border: 1px solid #ddd; /* Card border */
-          border-radius: 8px; /* Rounded corners */
-          padding: 1rem;
-
-          h3 {
-              margin-top: 0; /* Remove top margin */
-          }
-      }
-  }
-}
-
-// Header styles
-.header {
-    display: flex;
-    justify-content: space-between; /* Align items with space between */
-    align-items: center; /* Center vertically */
-    padding: 1rem;
-    background-color: #282c34; /* Background color */
-    color: white; /* Text color */
-
-    .header-title {
-        margin: 0; /* Remove default margin */
+        }
     }
 
-    .header-nav {
-        display: flex; /* Use flexbox for nav links */
-        gap: 1.5rem; /* Space between links */
+    .movie-details {
+        flex: 2;
+        padding-left: 1rem;
 
-        a {
-            color: white; /* Link color */
-            text-decoration: none; /* Remove underline */
-            transition: color 0.3s; /* Smooth transition for hover effect */
+        .movie-card {
+            background: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 1rem;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); // Add shadow for depth
 
-            &:hover {
-                color: #61dafb; /* Change color on hover */
+            h3 {
+                margin-top: 0;
+                font-size: 20px; // Increased font size for better visibility
             }
         }
     }
 }
 
-// Optional: Add styles for other components if necessary
+// Movies grid for responsive design
+.movies-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px; // Use gap for spacing between cards
+    justify-content: space-between; // Center the grid content
+    padding: 20px;
+
+    .movie-card {
+        flex: 1 1 calc(20% - 16px); // Adjust based on desired card count
+        background-color: #f9f9f9; // Light background
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        padding: 16px;
+        text-align: center;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        cursor: pointer;
+        transition: transform 0.2s, box-shadow 0.2s, background-color 0.2s; // Added background-color transition
+
+        h4 {
+            margin: 0 0 8px 0;
+            font-size: 18px;
+            color: $text-color;
+        }
+
+        p {
+            margin: 4px 0;
+            font-size: 14px;
+        }
+
+        &:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        // Style for selected movie card
+        &.selected {
+            background-color: $primary-color; // Use primary color for selected movie
+            color: white; // Change text color for better contrast
+            border: 1px solid darken($primary-color, 10%); // Optional: highlight border
+
+            h4 {
+                color: #f5f5f5; // Lighter text color for title in selected card
+            }
+        }
+    }
+
+    // Media queries for responsive layout
+    @media (min-width: 1200px) {
+        .movie-card {
+            flex: 1 1 calc(20% - 16px); /* 5 cards across */
+        }
+    }
+
+    @media (min-width: 992px) and (max-width: 1199px) {
+        .movie-card {
+            flex: 1 1 calc(25% - 16px); /* 4 cards across */
+        }
+    }
+
+    @media (min-width: 768px) and (max-width: 991px) {
+        .movie-card {
+            flex: 1 1 calc(33.3333% - 16px); /* 3 cards across */
+        }
+    }
+
+    @media (min-width: 576px) and (max-width: 767px) {
+        .movie-card {
+            flex: 1 1 calc(50% - 16px); /* 2 cards across */
+        }
+    }
+
+    @media (max-width: 575px) {
+        .movie-card {
+            flex: 1 1 calc(100% - 16px); /* 1 card across */
+        }
+    }
+}
+
+// Header styles
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background-color: #282c34;
+    color: white;
+
+    .header-title {
+        margin: 0;
+        font-size: 24px; // Increased for visibility
+    }
+
+    .header-nav {
+        display: flex;
+        gap: 1.5rem;
+
+        a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+
+            &:hover {
+                color: $secondary-color; // Use secondary color on hover
+            }
+        }
+    }
+}
+
+// Checkout styles
 .checkout {
-  padding: 20px;
+    padding: 20px;
 
-  h2 {
-      margin-bottom: 20px;
-  }
+    h2 {
+        margin-bottom: 20px;
+        font-size: 22px; // Increased for emphasis
+    }
 
-  ul {
-      list-style-type: none;
-      padding: 0;
+    ul {
+        list-style-type: none;
+        padding: 0;
 
-      li {
-          margin-bottom: 10px;
-      }
-  }
+        li {
+            margin-bottom: 10px;
+            font-size: 16px; // Standardize font size
+        }
+    }
+}
+
+// Modal styles
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000; // Ensure it's above other content
+}
+
+.modal {
+    position: relative; /* Relative positioning for close icon */
+    background: white;
+    padding: 40px; /* Increased padding for larger content area */
+    border-radius: 8px; // Rounded corners
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    z-index: 1001; // Slightly higher than the overlay
+    width: 600px; /* Set a fixed width for the modal */
+    max-width: 90%; /* Responsive max width */
+
+    h2 {
+        margin-top: 20px; /* Increased margin above the h2 */
+        font-size: 24px; // Increased for emphasis
+        color: $text-color;
+    }
+
+    p {
+        margin: 4px 0;
+        font-size: 16px; // Standardize font size
+    }
+
+    .modal-close {
+        position: absolute; /* Positioning the close icon */
+        top: 10px;
+        right: 10px;
+        font-size: 24px; /* Adjust size */
+        color: $primary-color; /* Use primary color */
+        cursor: pointer;
+        transition: color 0.3s;
+
+        /* Circular background */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 30px; /* Diameter of the circle */
+        height: 30px; /* Diameter of the circle */
+        border-radius: 50%; /* Makes it circular */
+        background-color: rgba(98, 0, 234, 0.1); /* Light background color */
+
+        &:hover {
+            color: darken($primary-color, 10%); /* Darken on hover */
+            background-color: rgba(98, 0, 234, 0.2); /* Darken background on hover */
+        }
+    }
+}
+
+// Return movies container styles
+.return-movies-container {
+    padding: 20px;
 }

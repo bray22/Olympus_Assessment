@@ -75,10 +75,21 @@ namespace MovieRentalApi.Controllers
             {
                 var movie = movies.FirstOrDefault(m => m.Title.Equals(title, System.StringComparison.OrdinalIgnoreCase));
 
-                // If the movie exists, increment available copies
+                // If the movie exists, increment available copies, ensuring not to exceed original stock
                 if (movie != null)
                 {
-                    movie.AvailableCopies++;
+                    if (movie.AvailableCopies < 10) // Assuming the max stock is 10
+                    {
+                        movie.AvailableCopies++;
+                    }
+                    else
+                    {
+                        return BadRequest($"Movie '{title}' already at max available copies.");
+                    }
+                }
+                else
+                {
+                    return BadRequest($"Movie '{title}' does not exist.");
                 }
             }
 
