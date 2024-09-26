@@ -1,4 +1,4 @@
-# Movie Rental Web Application
+# Movie Rentals Online
 
 A web application for renting movies online. This project includes a backend API built with ASP.NET Core and a frontend client application using React. Users can view available movies, check out rentals, and return movies.
 
@@ -11,7 +11,6 @@ A web application for renting movies online. This project includes a backend API
 - [Frontend Setup](#frontend-setup)
 - [Usage](#usage)
 - [API Endpoints](#api-endpoints)
-- [License](#license)
 
 ## Features
 
@@ -24,7 +23,7 @@ A web application for renting movies online. This project includes a backend API
 ## Technologies
 
 - **Backend**: ASP.NET Core, C#
-- **Frontend**: React, JavaScript
+- **Frontend**: React.js
 - **Data**: JSON file for movie data
 - **Development Tools**: Visual Studio, Visual Studio Code, npm, Postman
 - **Database**: N/A (uses a JSON file)
@@ -36,7 +35,6 @@ A web application for renting movies online. This project includes a backend API
 - [.NET SDK](https://dotnet.microsoft.com/download) (version 6.0 or later)
 - [Node.js](https://nodejs.org/en/download/) (version 14 or later)
 - [npm](https://www.npmjs.com/get-npm) (comes with Node.js)
-- A code editor (e.g., Visual Studio, Visual Studio Code)
 
 ### Backend Setup
 
@@ -44,7 +42,7 @@ A web application for renting movies online. This project includes a backend API
 
    ```bash
    git clone <repository-url>
-   cd MovieRentalApi
+   cd server
 
 2. Open the backend project in Visual Studio.
 
@@ -100,28 +98,7 @@ Example Request:
 POST /api/Movies/return: Return movies. Send a JSON array of movie titles in the request body.
 Example Request:
 ["Inception"]
-License
-This project is licensed under the MIT License. For more details, please refer to the LICENSE file.
 
 Instructions for Use
 Modify the <repository-url>: Replace this placeholder with the actual URL of your project repository.
 Update License Information: If you choose a specific license, ensure to include or link to it.
-Add Any Additional Features or Notes: If you implement new features or changes, remember to update the README accordingly.
-Feel free to customize any sections based on your specific project details or personal preferences!
-
-markdown
-Copy code
-
-### Improvements Made:
-1. **Structured Instructions**: Used numbered lists for clarity in the setup process.
-2. **Clear Descriptions**: Added headings for each step and clarified the commands and their purposes.
-3. **Enhanced Usage Instructions**: Made the usage section more user-friendly by breaking down the actions a user can take.
-4. **Consistent Formatting**: Ensured that code snippets and JSON examples are clearly formatted for easy readability.
-5. **Accessibility for Users**: Provided tips for debugging and inspecting the application in a user-friendly manner. 
-
-This format should improve readability and provide a smoother experience for users setting up and using your application.
-
-
-
-
-
