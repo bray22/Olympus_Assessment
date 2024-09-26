@@ -6,7 +6,7 @@
     "Director": "Christopher Nolan",
     "YearOfRelease": 0,
     "Price": 7.50,
-    "AvailableCopies": 7
+    "AvailableCopies": 10
   },
   {
     "Title": "Parasite",
@@ -15,7 +15,7 @@
     "Director": "Bong Joon-ho",
     "YearOfRelease": 0,
     "Price": 9.00,
-    "AvailableCopies": 7
+    "AvailableCopies": 10
   },
   {
     "Title": "Amélie",
@@ -24,7 +24,7 @@
     "Director": "Jean-Pierre Jeunet",
     "YearOfRelease": 0,
     "Price": 6.00,
-    "AvailableCopies": 8
+    "AvailableCopies": 10
   },
   {
     "Title": "Spirited Away",
@@ -42,7 +42,7 @@
     "Director": "Francis Ford Coppola",
     "YearOfRelease": 0,
     "Price": 8.00,
-    "AvailableCopies": 8
+    "AvailableCopies": 10
   },
   {
     "Title": "City of God",
@@ -51,7 +51,7 @@
     "Director": "Fernando Meirelles",
     "YearOfRelease": 0,
     "Price": 7.00,
-    "AvailableCopies": 9
+    "AvailableCopies": 10
   },
   {
     "Title": "Pan's Labyrinth",
@@ -60,7 +60,7 @@
     "Director": "Guillermo del Toro",
     "YearOfRelease": 0,
     "Price": 8.50,
-    "AvailableCopies": 7
+    "AvailableCopies": 10
   },
   {
     "Title": "The Shawshank Redemption",
@@ -141,7 +141,7 @@
     "Director": "Spike Jonze",
     "YearOfRelease": 0,
     "Price": 8.75,
-    "AvailableCopies": 9
+    "AvailableCopies": 10
   },
   {
     "Title": "The Secret in Their Eyes",
@@ -150,7 +150,7 @@
     "Director": "Juan José Campanella",
     "YearOfRelease": 0,
     "Price": 7.25,
-    "AvailableCopies": 8
+    "AvailableCopies": 10
   },
   {
     "Title": "Let the Right One In",
@@ -159,7 +159,7 @@
     "Director": "Tomas Alfredson",
     "YearOfRelease": 0,
     "Price": 6.50,
-    "AvailableCopies": 9
+    "AvailableCopies": 10
   },
   {
     "Title": "Run Lola Run",
@@ -168,7 +168,7 @@
     "Director": "Tom Tykwer",
     "YearOfRelease": 0,
     "Price": 5.75,
-    "AvailableCopies": 9
+    "AvailableCopies": 10
   },
   {
     "Title": "The Hunt",
@@ -186,6 +186,6 @@
     "Director": "Asghar Farhadi",
     "YearOfRelease": 0,
     "Price": 7.75,
-    "AvailableCopies": 8
+    "AvailableCopies": 10
   }
 ]
