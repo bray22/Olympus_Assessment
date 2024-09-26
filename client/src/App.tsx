@@ -7,6 +7,7 @@ import { Movie } from './types';
 import Header from './components/Header'; // Assuming you have a Header component
 import axios from 'axios';
 import './styles/style.scss';
+
 const App: React.FC = () => {
     const [selectedMovies, setSelectedMovies] = useState<Movie[]>([]);
     const [checkedOutMovies, setCheckedOutMovies] = useState<Movie[]>([]);
@@ -26,7 +27,6 @@ const App: React.FC = () => {
             await axios.post('https://localhost:7021/api/movies/checkout', titlesToCheckout);
             setCheckedOutMovies(selectedMovies); // Update the checked-out movies state
             setSelectedMovies([]); // Clear the cart after checkout
-          
         } catch (error) {
             console.error('Error checking out movies:', error);
         }
@@ -40,7 +40,7 @@ const App: React.FC = () => {
         <div>
             <Header />
             <Routes>
-                <Route path="/" element={<Movies onSelectMovie={handleAddToCart} selectedMovies={selectedMovies} />} />
+                <Route path="/" element={<Movies onSelectMovie={handleAddToCart} selectedMovies={selectedMovies} checkedOutMovies={checkedOutMovies} />} />
                 <Route path="/checkout" element={<CheckoutMovie selectedMovies={selectedMovies} onCheckout={handleCheckout} />} />
                 <Route path="/return" element={<ReturnMovie selectedMovies={checkedOutMovies} onReturnMovies={handleReturnMovies} />} />
             </Routes>

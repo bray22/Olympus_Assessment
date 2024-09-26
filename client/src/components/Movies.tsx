@@ -5,9 +5,10 @@ import Modal from './Modal'; // Import the modal component
 interface MoviesProps {
     onSelectMovie: (movie: Movie) => void; // Accept a single movie for adding/removing
     selectedMovies: Movie[]; // Prop to check which movies are selected
+    checkedOutMovies: Movie[]; // Prop to check which movies are checked out
 }
 
-const Movies: React.FC<MoviesProps> = ({ onSelectMovie, selectedMovies }) => {
+const Movies: React.FC<MoviesProps> = ({ onSelectMovie, selectedMovies, checkedOutMovies }) => {
     const [movies, setMovies] = useState<Movie[]>([]);
     const [selectedMovie, setSelectedMovie] = useState<Movie | null>(null); // State for the selected movie
     const [isModalOpen, setIsModalOpen] = useState(false); // State to manage modal visibility
@@ -45,6 +46,8 @@ const Movies: React.FC<MoviesProps> = ({ onSelectMovie, selectedMovies }) => {
             <div className="movies-grid">
                 {movies.map((movie) => {
                     const isSelected = selectedMovies.some(selected => selected.title === movie.title);
+                    const isCheckedOut = checkedOutMovies.some(checkedOut => checkedOut.title === movie.title); // Check if movie is checked out
+
                     return (
                         <div
                             key={movie.title}
@@ -54,16 +57,26 @@ const Movies: React.FC<MoviesProps> = ({ onSelectMovie, selectedMovies }) => {
                             <h4>{movie.title}</h4>
                             <p><strong>Genre:</strong> {movie.genre}</p>
                             <p><strong>Available Copies:</strong> {movie.availableCopies}</p>
-                            <button 
-                                className="button" 
-                                onClick={(e) => { // Handle add/remove separately
-                                    e.stopPropagation(); // Prevent opening modal
-                                    handleSelectMovie(movie);
-                                }}
-                                disabled={movie.availableCopies === 0} // Disable button if no copies available
-                            >
-                                {isSelected ? 'Remove from Cart' : 'Add to Cart'}
-                            </button>
+                            
+                            {/* Conditional rendering for checked out message */}
+                            {isCheckedOut ? (
+                                <p className="checked-out-message">Checked-out</p>
+                            ) : (
+                                !isSelected && ( // Only render button if movie is not selected
+                                    <button 
+                                        className="button" 
+                                        onClick={(e) => { // Handle add/remove separately
+                                            e.stopPropagation(); // Prevent opening modal
+                                            handleSelectMovie(movie); // Call the function to add/remove the movie from cart
+                                        }}
+                                    >
+                                        Add to Cart
+                                    </button>
+                                )
+                            )}
+                            {isSelected && (
+                                <p className="in-cart-message">In Cart</p> // Optional message for clarity
+                            )}
                         </div>
                     );
                 })}
