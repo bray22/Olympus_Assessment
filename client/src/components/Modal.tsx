@@ -2,7 +2,7 @@ import React from 'react';
 import { Movie } from '../types';
 
 interface ModalProps {
-    movie: Movie; // Adjust type as necessary
+    movie: Movie; 
     onClose: () => void;
     onSelectMovie: (movie: Movie) => void; // Prop for adding/removing from cart
     selectedMovies: Movie[]; // Prop to check if the movie is selected
@@ -11,10 +11,10 @@ interface ModalProps {
 const Modal: React.FC<ModalProps> = ({ movie, onClose, onSelectMovie, selectedMovies }) => {
     if (!movie) return null; // Return null if no movie is selected
 
-    // Check if the movie is already in the cart
+    // is movie in the cart?
     const isSelected = selectedMovies.some(selected => selected.title === movie.title);
 
-    // Handle clicks on the overlay to close the modal
+    // close the modal if click away from modal
     const handleOverlayClick = (event: React.MouseEvent<HTMLDivElement>) => {
         if (event.currentTarget === event.target) {
             onClose();
@@ -23,9 +23,8 @@ const Modal: React.FC<ModalProps> = ({ movie, onClose, onSelectMovie, selectedMo
 
     // Handle Add to Cart button click
     const handleAddToCart = (e: React.MouseEvent<HTMLButtonElement>) => {
-        e.stopPropagation(); // Prevent overlay click
-        onSelectMovie(movie); // Call the function to add/remove from cart
-        // Optionally close the modal after adding to cart
+        e.stopPropagation(); 
+        onSelectMovie(movie); // add/remove from cart
         onClose(); 
     };
 

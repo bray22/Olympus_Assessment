@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import { MOVIE_ENDPOINT, LOADING_MESSAGE } from './MovieConstants'; 
 
 const Movie = () => {
     const { title } = useParams();
@@ -7,7 +8,7 @@ const Movie = () => {
 
     useEffect(() => {
         const fetchMovieDetail = async () => {
-            const response = await fetch('https://localhost:7021/api/Movies');
+            const response = await fetch(MOVIE_ENDPOINT);
             const data = await response.json();
             const foundMovie = data.find(m => m.title === decodeURIComponent(title));
             setMovie(foundMovie);
@@ -16,8 +17,9 @@ const Movie = () => {
         fetchMovieDetail();
     }, [title]);
 
+    // Show loading if fetching
     if (!movie) {
-        return <div>Loading...</div>;
+        return <div>{LOADING_MESSAGE}</div>;
     }
 
     return (
@@ -29,7 +31,6 @@ const Movie = () => {
             <p><strong>Price:</strong> ${movie.price.toFixed(2)}</p>
             <p><strong>Language:</strong> {movie.language}</p>
             <p><strong>Available Copies:</strong> {movie.availableCopies}</p> {/* Display available copies */}
-            {/* Add any additional details you want to show */}
             <button className="button">Rent Movie</button>
         </div>
     );

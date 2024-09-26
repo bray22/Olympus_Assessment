@@ -1,11 +1,9 @@
-// Define primary and secondary colors according to Material Design
-$primary-color: #6200ea; // Purple
-$secondary-color: #03dac6; // Teal
-$background-color: #f5f5f5; // Light Grey
-$text-color: #212121; // Dark Grey
-$hover-color: darken($secondary-color, 10%); // Darkened secondary color for hover effects
+$primary-color: #6200ea;
+$secondary-color: #03dac6;
+$background-color: #f5f5f5;
+$text-color: #212121;
+$hover-color: darken($secondary-color, 10%);
 
-// Global styles
 body {
     font-family: 'Roboto', sans-serif;
     background-color: $background-color;
@@ -14,11 +12,10 @@ body {
     padding: 0;
 }
 
-// Navbar styles
 .navbar {
     background-color: $primary-color;
     padding: 16px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); // Add shadow for depth
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 
     h1 {
         color: white;
@@ -27,7 +24,6 @@ body {
     }
 }
 
-// Button styles
 .button {
     background-color: $secondary-color;
     color: white;
@@ -36,15 +32,14 @@ body {
     padding: 8px 16px;
     cursor: pointer;
     font-size: 16px;
-    transition: background-color 0.2s, transform 0.2s; // Added transform for scale effect
+    transition: background-color 0.2s, transform 0.2s;
 
     &:hover {
         background-color: $hover-color;
-        transform: translateY(-2px); // Slightly lift button on hover
+        transform: translateY(-2px);
     }
 }
 
-// Movies container styles
 .movies-container {
     display: flex;
     padding: 20px;
@@ -57,7 +52,7 @@ body {
 
         h2 {
             margin-bottom: 1rem;
-            font-size: 20px; // Increased size for better readability
+            font-size: 20px;
             color: $text-color;
         }
 
@@ -72,7 +67,7 @@ body {
                 transition: background 0.3s;
 
                 &:hover {
-                    background: rgba(0, 0, 0, 0.05); // Slightly darker background on hover
+                    background: rgba(0, 0, 0, 0.05);
                 }
             }
         }
@@ -87,34 +82,33 @@ body {
             border: 1px solid #ddd;
             border-radius: 8px;
             padding: 1rem;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); // Add shadow for depth
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 
             h3 {
                 margin-top: 0;
-                font-size: 20px; // Increased font size for better visibility
+                font-size: 20px;
             }
         }
     }
 }
 
-// Movies grid for responsive design
 .movies-grid {
     display: flex;
     flex-wrap: wrap;
-    gap: 16px; // Use gap for spacing between cards
-    justify-content: space-between; // Center the grid content
+    gap: 16px;
+    justify-content: space-between;
     padding: 20px;
 
     .movie-card {
-        flex: 1 1 calc(20% - 16px); // Adjust based on desired card count
-        background-color: #f9f9f9; // Light background
+        flex: 1 1 calc(20% - 16px);
+        background-color: #f9f9f9;
         border: 1px solid #ddd;
         border-radius: 8px;
         padding: 16px;
         text-align: center;
         box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         cursor: pointer;
-        transition: transform 0.2s, box-shadow 0.2s, background-color 0.2s; // Added background-color transition
+        transition: transform 0.2s, box-shadow 0.2s, background-color 0.2s;
 
         h4 {
             margin: 0 0 8px 0;
@@ -132,51 +126,48 @@ body {
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
         }
 
-        // Style for selected movie card
         &.selected {
-            background-color: $primary-color; // Use primary color for selected movie
-            color: white; // Change text color for better contrast
-            border: 1px solid darken($primary-color, 10%); // Optional: highlight border
+            background-color: $primary-color;
+            color: white;
+            border: 1px solid darken($primary-color, 10%);
 
             h4 {
-                color: #f5f5f5; // Lighter text color for title in selected card
+                color: #f5f5f5;
             }
         }
     }
 
-    // Media queries for responsive layout
     @media (min-width: 1200px) {
         .movie-card {
-            flex: 1 1 calc(20% - 16px); /* 5 cards across */
+            flex: 1 1 calc(20% - 16px);
         }
     }
 
     @media (min-width: 992px) and (max-width: 1199px) {
         .movie-card {
-            flex: 1 1 calc(25% - 16px); /* 4 cards across */
+            flex: 1 1 calc(25% - 16px);
         }
     }
 
     @media (min-width: 768px) and (max-width: 991px) {
         .movie-card {
-            flex: 1 1 calc(33.3333% - 16px); /* 3 cards across */
+            flex: 1 1 calc(33.3333% - 16px);
         }
     }
 
     @media (min-width: 576px) and (max-width: 767px) {
         .movie-card {
-            flex: 1 1 calc(50% - 16px); /* 2 cards across */
+            flex: 1 1 calc(50% - 16px);
         }
     }
 
     @media (max-width: 575px) {
         .movie-card {
-            flex: 1 1 calc(100% - 16px); /* 1 card across */
+            flex: 1 1 calc(100% - 16px);
         }
     }
 }
 
-// Header styles
 .header {
     display: flex;
     justify-content: space-between;
@@ -187,7 +178,7 @@ body {
 
     .header-title {
         margin: 0;
-        font-size: 24px; // Increased for visibility
+        font-size: 24px;
     }
 
     .header-nav {
@@ -200,19 +191,18 @@ body {
             transition: color 0.3s;
 
             &:hover {
-                color: $secondary-color; // Use secondary color on hover
+                color: $secondary-color;
             }
         }
     }
 }
 
-// Checkout styles
 .checkout {
     padding: 20px;
 
     h2 {
         margin-bottom: 20px;
-        font-size: 22px; // Increased for emphasis
+        font-size: 22px;
     }
 
     ul {
@@ -221,12 +211,11 @@ body {
 
         li {
             margin-bottom: 10px;
-            font-size: 16px; // Standardize font size
+            font-size: 16px;
         }
     }
 }
 
-// Modal styles
 .modal-overlay {
     position: fixed;
     top: 0;
@@ -237,56 +226,53 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 1000; // Ensure it's above other content
+    z-index: 1000;
 }
 
 .modal {
-    position: relative; /* Relative positioning for close icon */
+    position: relative;
     background: white;
-    padding: 40px; /* Increased padding for larger content area */
-    border-radius: 8px; // Rounded corners
+    padding: 40px;
+    border-radius: 8px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    z-index: 1001; // Slightly higher than the overlay
-    width: 600px; /* Set a fixed width for the modal */
-    max-width: 90%; /* Responsive max width */
+    z-index: 1001;
+    width: 600px;
+    max-width: 90%;
 
     h2 {
-        margin-top: 20px; /* Increased margin above the h2 */
-        font-size: 24px; // Increased for emphasis
+        margin-top: 20px;
+        font-size: 24px;
         color: $text-color;
     }
 
     p {
         margin: 4px 0;
-        font-size: 16px; // Standardize font size
+        font-size: 16px;
     }
 
     .modal-close {
-        position: absolute; /* Positioning the close icon */
+        position: absolute;
         top: 10px;
         right: 10px;
-        font-size: 24px; /* Adjust size */
-        color: $primary-color; /* Use primary color */
+        font-size: 24px;
+        color: $primary-color;
         cursor: pointer;
         transition: color 0.3s;
-
-        /* Circular background */
         display: flex;
         justify-content: center;
         align-items: center;
-        width: 30px; /* Diameter of the circle */
-        height: 30px; /* Diameter of the circle */
-        border-radius: 50%; /* Makes it circular */
-        background-color: rgba(98, 0, 234, 0.1); /* Light background color */
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        background-color: rgba(98, 0, 234, 0.1);
 
         &:hover {
-            color: darken($primary-color, 10%); /* Darken on hover */
-            background-color: rgba(98, 0, 234, 0.2); /* Darken background on hover */
+            color: darken($primary-color, 10%);
+            background-color: rgba(98, 0, 234, 0.2);
         }
     }
 }
 
-// Return movies container styles
 .return-movies-container {
     padding: 20px;
 }

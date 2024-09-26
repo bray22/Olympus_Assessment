@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Movie } from '../types';
 import Modal from './Modal'; // Import the modal component
+import { MOVIE_ENDPOINT } from '../constants/MovieConstants'; 
 
 interface MoviesProps {
     onSelectMovie: (movie: Movie) => void; // Accept a single movie for adding/removing
@@ -16,7 +17,7 @@ const Movies: React.FC<MoviesProps> = ({ onSelectMovie, selectedMovies, checkedO
     // Fetch movies from the API
     useEffect(() => {
         const fetchMovies = async () => {
-            const response = await fetch('https://localhost:7021/api/Movies');
+            const response = await fetch(MOVIE_ENDPOINT); // Use the constant for the API endpoint
             const data: Movie[] = await response.json();
             setMovies(data);
         };
@@ -24,18 +25,16 @@ const Movies: React.FC<MoviesProps> = ({ onSelectMovie, selectedMovies, checkedO
         fetchMovies();
     }, []);
 
-    // Function to handle movie selection
+    // handle movie selection
     const handleSelectMovie = (movie: Movie) => {
-        onSelectMovie(movie); // Call the function to add/remove the movie from cart
+        onSelectMovie(movie); // add/remove the movie from cart
     };
 
-    // Function to open modal
     const openModal = (movie: Movie) => {
         setSelectedMovie(movie);
         setIsModalOpen(true);
     };
 
-    // Function to close modal
     const closeModal = () => {
         setIsModalOpen(false);
         setSelectedMovie(null);
@@ -46,19 +45,18 @@ const Movies: React.FC<MoviesProps> = ({ onSelectMovie, selectedMovies, checkedO
             <div className="movies-grid">
                 {movies.map((movie) => {
                     const isSelected = selectedMovies.some(selected => selected.title === movie.title);
-                    const isCheckedOut = checkedOutMovies.some(checkedOut => checkedOut.title === movie.title); // Check if movie is checked out
+                    const isCheckedOut = checkedOutMovies.some(checkedOut => checkedOut.title === movie.title); // is checked out?
 
                     return (
                         <div
                             key={movie.title}
-                            className={`movie-card ${isSelected ? 'selected' : ''}`} // Add a class for styling
+                            className={`movie-card ${isSelected ? 'selected' : ''}`} 
                             onClick={() => openModal(movie)} // Open modal on card click
                         >
                             <h4>{movie.title}</h4>
                             <p><strong>Genre:</strong> {movie.genre}</p>
                             <p><strong>Available Copies:</strong> {movie.availableCopies}</p>
-                            
-                            {/* Conditional rendering for checked out message */}
+
                             {isCheckedOut ? (
                                 <p className="checked-out-message">Checked-out</p>
                             ) : (
@@ -66,8 +64,8 @@ const Movies: React.FC<MoviesProps> = ({ onSelectMovie, selectedMovies, checkedO
                                     <button 
                                         className="button" 
                                         onClick={(e) => { // Handle add/remove separately
-                                            e.stopPropagation(); // Prevent opening modal
-                                            handleSelectMovie(movie); // Call the function to add/remove the movie from cart
+                                            e.stopPropagation(); 
+                                            handleSelectMovie(movie); // add/remove the movie from cart
                                         }}
                                     >
                                         Add to Cart
@@ -75,7 +73,7 @@ const Movies: React.FC<MoviesProps> = ({ onSelectMovie, selectedMovies, checkedO
                                 )
                             )}
                             {isSelected && (
-                                <p className="in-cart-message">In Cart</p> // Optional message for clarity
+                                <p className="in-cart-message">In Cart</p> 
                             )}
                         </div>
                     );
